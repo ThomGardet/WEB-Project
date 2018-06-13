@@ -1,10 +1,9 @@
 <?php
-require('Posts.php');
+require_once('Post.php');
 
 class PostsManager{
     
-
-private $_db;
+    private $_db;
 
 	public function __construct($db)
 	{
@@ -16,36 +15,50 @@ private $_db;
     	$this->_db = $db;
   	}
 
-
-	public function get($idUser)
-	{
+    public function get($id) {
         $id = (int) $id;
 
-    	$q = $this->_db->query('SELECT * FROM users WHERE id = '.$id);
-    	$donnees = $q->fetch(PDO::FETCH_ASSOC);
+        $q = $this->_db->query('SELECT * FROM posts WHERE id = '.$id);
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
 
-    	return new Post($donnees);
+        return new Post($donnees);
+    }
+
+	public function getUser($idUser)
+	{
+        $id = (int) $idUser;
+
+        $posts = [];
+
+    	$q = $this->_db->query('SELECT * FROM posts WHERE idUser = '.$id);
+    	
+        while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+            $posts[] = new Post($donnees);
+        }
+
+    	return $posts;
 	}
     
     public function add(Post $post){
-        $q = this->_db->prepare('INSERT INTO posts(text,image) VALUES(:text, :image)');
+        $q = $this->_db->prepare('INSERT INTO posts(descriptiv, image, idUser, publicationDate) VALUES(:descriptiv, :image, :idUser, NOW())');
         
-        $q->bindValue(':text', $post->text());
+        $q->bindValue(':descriptiv', $post->descriptiv());
         $q->bindValue(':image', $post->image());
+        $q->bindValue(':idUser', $post->idUser());
         
         $q->execute();
     }
 
     public function delete(Post $post){
-        $this->_db->exec('DELETE FROM posts WHERE post = '.$post->id());
+        $this->_db->exec('DELETE FROM posts WHERE id = '.$post->id());
         
     }
     
-    	public function update(Post $post)
+    public function update(Post $post)
   	{
-    	$q = $this->_db->prepare('UPDATE users SET text = :text, image = :image WHERE id = :id');
+    	$q = $this->_db->prepare('UPDATE posts SET descriptiv = :descriptiv, image = :image WHERE id = :id');
 
-    	$q->bindValue(':text', $post->text());
+    	$q->bindValue(':descriptiv', $post->text());
     	$q->bindValue(':image', $post->image());
 
 
@@ -58,16 +71,22 @@ private $_db;
 		$q = $this->_db->query('SELECT * FROM posts');	
 
 		while ($donnees = $q->fetch()) {
-			$posts[] = new Post ($donnees);
+            $post = new Post($donnees);
+            echo $post->id();
+			$posts[] = $post;
 		}
 		return $posts;
 	}
 }
 
-$PDO = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+/*$usrManager = new PostsManager(new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', ''));
 
-$q = $PDO->query('SELECT * FROM posts');
-while ($data = $q->fetch()) {
-	echo $data['id'];
-}
-?>
+$users = $usrManager->getList();
+
+foreach ($users as $user) {
+    ?>
+
+    <?= $user->descriptiv(); ?>
+
+    <?php   
+}*/

@@ -1,6 +1,6 @@
 <?php
 
-require('User.php');
+require_once('User.php');
 
 class UsersManager
 {
@@ -20,7 +20,7 @@ class UsersManager
 
 	public function get($idUser)
 	{
-        $id = (int) $id;
+        $id = (int) $idUser;
 
     	$q = $this->_db->query('SELECT * FROM users WHERE id = '.$id);
     	$donnees = $q->fetch(PDO::FETCH_ASSOC);
@@ -54,6 +54,7 @@ class UsersManager
   	{
     	$q = $this->_db->prepare('UPDATE users SET lastName = :lastName, firstName = :firstName, mail = :mail, phone = :phone, postalCode = :postalCode, street = :street, streetNumber = :streetNumber, town = :town, country = :country WHERE id = :id');
 
+    	$q->bindValue(':id', $usr->id());
     	$q->bindValue(':lastName', $usr->lastName());
     	$q->bindValue(':firstName', $usr->firstName());
     	$q->bindValue(':mail', $usr->mail());
@@ -72,8 +73,8 @@ class UsersManager
         $users = [];
 		$q = $this->_db->query('SELECT * FROM users');	
 
-		while ($donnees = $q->fetch()) {
-			$users[] = new User($donnees);
+		while ($data = $q->fetch()) {
+			$users[] = new User($data);
 		}
 		return $users;
 	}
@@ -86,14 +87,8 @@ $users = $usrManager->getList();
 foreach ($users as $user) {
 	?>
 
-	<?= $user->lastName(); ?>
+	<?= $user->id(); ?>
 
 	<?php	
 }*/
 
-$PDO = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
-
-$q = $PDO->query('SELECT * FROM users');
-while ($data = $q->fetch()) {
-	echo $data['id'];
-}

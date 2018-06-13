@@ -3,6 +3,7 @@
 class User
 {
 	private $_id;
+	private $_profilPic;
 	private $_lastName;
 	private $_firstName;
 	private $_mail;
@@ -13,9 +14,17 @@ class User
 	private $_town;
 	private $_country;
 
+	public function __construct($data) {
+		$this->hydrate($data);
+	}
+
 	public function id()
 	{
 		return $this->_id;
+	}
+	public function profilPic()
+	{
+		return $this->_profilPic;
 	}
 	public function lastName()
 	{
@@ -54,6 +63,14 @@ class User
 		return $this->_country;
 	}
 
+	public function setId($id)
+	{
+		$this->_id = $id;
+	}
+	public function setProfilPic($profilPic)
+	{
+		$this->_profilPic = $profilPic;
+	}
 	public function setLastName($lastName)
 	{
 		$this->_lastName = $lastName;

@@ -1,37 +1,49 @@
-<? php 
+<?php 
     
-    class Post{
-    
-
-    
+class Post{
+ 
     private $_id;
-    private $_text;
+    private $_descriptiv;
     private $_image;
+    private $_idUser;
+    private $_publicationDate;
     
-
-    public function id(){
+    public function __construct(array $data) {
+        $this->hydrate($data);
+    }
+    public function id() {
         return $this->_id;
-        
     }
-
- public function text(){
-        return $this->_text;
-        
+    public function descriptiv() {
+        return $this->_descriptiv;   
     }
-
- public function image(){
+    public function image() {
         return $this->_image;
-        
+    }
+    public function idUser() {
+        return $this->_idUser;
+    }
+    public function publicationDate() {
+        return $this->_publicationDate;
     }
 
-public function setText($text){
-    $this->_text = $text;
-}
+    public function setId($id) {
+        $this->_id = $id;
+    }
+    public function setDescriptiv($descriptiv) {
+        $this->_descriptiv = $descriptiv;
+    }
+    public function setImage($image) {
+        $this->_image = $image;
+    }
+    public function setIdUser($idUser) {
+        $this->_idUser = $idUser;
+    }
+    public function setPublicationDate($publicationDate) {
+        $this->_publicationDate = $publicationDate;
+    }
 
-public function setImage($image){
-    $this->_image = $image;
-}
-public function hydrate(array $donnees)
+    public function hydrate(array $donnees)
 	{
 	  	foreach ($donnees as $key => $value)
 	  	{
@@ -45,4 +57,3 @@ public function hydrate(array $donnees)
 	}
     
 }
-    ?>
