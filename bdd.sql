@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 11 juin 2018 à 17:36
+-- Généré le :  mer. 13 juin 2018 à 16:41
 -- Version du serveur :  10.1.31-MariaDB
 -- Version de PHP :  7.2.4
 
@@ -34,6 +34,54 @@ CREATE TABLE `comments` (
   `idUser` int(11) NOT NULL,
   `comment` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `friends`
+--
+
+CREATE TABLE `friends` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idFriend` int(11) NOT NULL,
+  `meetingDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `friends`
+--
+
+INSERT INTO `friends` (`id`, `idUser`, `idFriend`, `meetingDate`) VALUES
+(1, 1, 2, '0000-00-00 00:00:00'),
+(2, 1, 2, '0000-00-00 00:00:00'),
+(3, 1, 3, '0000-00-00 00:00:00'),
+(4, 1, 4, '0000-00-00 00:00:00'),
+(5, 2, 1, '0000-00-00 00:00:00'),
+(6, 2, 3, '0000-00-00 00:00:00'),
+(7, 3, 1, '0000-00-00 00:00:00'),
+(8, 4, 1, '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `logins`
+--
+
+CREATE TABLE `logins` (
+  `id` int(11) NOT NULL,
+  `username` varchar(16) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `idUser` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `logins`
+--
+
+INSERT INTO `logins` (`id`, `username`, `password`, `idUser`) VALUES
+(1, 'kevin', '$2y$11$uCqoYgszUzGvkZMc5uEkJuUROrBEmY92EEkuUvOjmXAUvAMs9VEem', 1),
+(2, 'batou', '$2y$11$X.smAxSAfIlaWoc9sezAAenit9A1az.Cf6eldVVwtUzSvuSHp0sla', 2);
 
 -- --------------------------------------------------------
 
@@ -70,9 +118,22 @@ CREATE TABLE `monuments` (
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `text` text NOT NULL,
-  `image` varchar(255) NOT NULL
+  `descriptiv` text NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `publicationDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `posts`
+--
+
+INSERT INTO `posts` (`id`, `descriptiv`, `image`, `idUser`, `publicationDate`) VALUES
+(1, 'some text', 'null', 2, '0000-00-00 00:00:00'),
+(2, 'another text', 'null', 2, '0000-00-00 00:00:00'),
+(3, 'test 1, 2, 3', 'null', 3, '0000-00-00 00:00:00'),
+(4, 'another test', 'null', 4, '0000-00-00 00:00:00'),
+(5, 'last test', 'null', 1, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -82,6 +143,7 @@ CREATE TABLE `posts` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `profilPic` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
@@ -97,13 +159,27 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `lastName`, `firstName`, `mail`, `phone`, `postalCode`, `street`, `streetNumber`, `town`, `country`) VALUES
-(1, 'ouahmad', 'kevin', 'kevinouahmad@gmail.com', '0612581547', 90000, 'Chopin', 14, 'Belfort', 'France'),
-(2, 'Leclerc', 'Baptiste', 'baptiste.leclerc@uha.fr', '0634532354', 68000, 'test', 6, 'Mulhouse', 'France');
+INSERT INTO `users` (`id`, `profilPic`, `lastName`, `firstName`, `mail`, `phone`, `postalCode`, `street`, `streetNumber`, `town`, `country`) VALUES
+(1, 'null', 'ouahmad', 'kevin', 'kevinouahmad@gmail.com', '0612581547', 90000, 'Chopin', 14, 'Belfort', 'France'),
+(2, 'null', 'Leclerc', 'Baptiste', 'baptiste.leclerc@uha.fr', '0634532354', 68000, 'test', 6, 'Mulhouse', 'France'),
+(3, 'null', 'pial', 'gauthier', 'efeff@gmail.com', '0688844899', 565656, 'efefef', 45, 'mulhouse', 'France'),
+(4, 'null', 'wagner', 'gauthier', 'kefe@gmail.com', '059334534', 575755, 'frefere', 45, 'fefze', 'ezefze');
 
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `friends`
+--
+ALTER TABLE `friends`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `logins`
+--
+ALTER TABLE `logins`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `messages`
@@ -134,6 +210,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `friends`
+--
+ALTER TABLE `friends`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `logins`
+--
+ALTER TABLE `logins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT pour la table `messages`
 --
 ALTER TABLE `messages`
@@ -149,13 +237,13 @@ ALTER TABLE `monuments`
 -- AUTO_INCREMENT pour la table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
