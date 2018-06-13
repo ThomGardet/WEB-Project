@@ -3,56 +3,135 @@
     <head>
         <meta charset="utf-8" />
         <title> Monument Go - <?= $title ?> </title>
-        <link rel="stylesheet" type="text/css" href="public/css/style.css" >
+        <link rel="stylesheet" type="text/css" href="public/css/templateStyle.css" >
     </head>
         
     <body>
-        <!-- Button to open the modal login form -->
+
+
+        <?php 
+        if (isset($_SESSION['connected'])) {
+            require_once(__DIR__ . '/../model/UsersManager.php');
+            require_once(__DIR__ . '/../model/friendsManager.php');
+
+            $usersManager = new UsersManager(new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', ''));
+            $friendsManager = new FriendsManager(new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', ''));
+
+            $user = $usersManager->get($_SESSION['idUser']);
+            $usersFriends = $friendsManager->getFriends($user->id(), $usersManager);
+        }
+
+        if (!(isset($_SESSION['connected']) && $_SESSION['connected'] == 'true')) {
+
+        ?>
 
         <!-- The Modal -->
         <div id="id01" class="modal">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
         <!-- Modal Content -->
-        <form class="modal-content animate" action="/action_page.php">
-            <div class="imgcontainer">
-                <img src="public/pics/user.png" alt="Avatar" class="avatar" width=80px, height=80>
-            </div>
-
             <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <form action="index.php?action=signin" method="POST">
+                    <div class="row">
+                        <h2 style="text-align:center">Login with Social Media or Manually</h2>
+                        <div class="vl">
+                            <span class="vl-innertext">or</span>
+                        </div>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                        <div class="col">
+                            <a href="#" class="fb btn">
+                                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                            </a>
+                            <a href="#" class="twitter btn">
+                                <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+                            </a>
+                            <a href="#" class="google btn">
+                                <i class="fa fa-google fa-fw"></i> Login with Google+
+                            </a>
+                        </div>
 
-                <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
+                        <div class="col">
+                            <div class="hide-md-lg">
+                                <p>Or sign in manually:</p>
+                            </div>
+
+                            <input type="text" name="username" placeholder="Username" required>
+                            <input type="password" name="password" placeholder="Password" required>
+                            <input type="submit" value="Login">
+                        </div>
+
+                    </div>
+                </form>
             </div>
 
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <span class="psw">Forgot <a href="#">password?</a></span>
-                    <span class="sign_in"> <a href="#"> Haven't an account yet? </a> </span>
+            <div class="bottom-container">
+              <div class="row">
+                <div class="col">
+                  <a href="index.php?action=signup" style="color:white" class="btn">Sign up</a>
+                </div>
+                <div class="col">
+                  <a href="#" style="color:white" class="btn">Forgot password?</a>
+                </div>
+              </div>
             </div>
-            </form>
         </div>
+
+        <?php 
+        } ?>
+
     	<div class="header">
-            <a href="#default" class="logo">MonumentGo</a>
+            <a href="#index.php?action=home" class="logo"><img src="public/pics/logo.png"> </a>
             <div class="header-right">
-                <a class="active" href="index.php?action=home">Home</a>
-                <a href="index.php?action=contact">Contact</a>
-                <a href="index.php?action=about">About</a>
-                <img src="public/pics/user.png" alt="user infos" class="user_infos" onclick="document.getElementById('id01').style.display='block'">    
+                <a <?php if ((isset($_GET['action']) && $_GET['action'] == 'home') || !isset($_GET['action'])) echo 'class="active"' ?> href="index.php?action=home">Home</a>
+                <a <?php if (isset($_GET['action']) && $_GET['action'] == 'contact') echo 'class="active"' ?> href="index.php?action=contact">Contact</a>
+                <a <?php if (isset($_GET['action']) && $_GET['action'] == 'about') echo 'class="active"' ?> href="index.php?action=about">About</a>
+
+                <?php 
+                if (!(isset($_SESSION['connected']) && $_SESSION['connected'] == 'true')) {
+                ?>
+
+                <!-- Button to open the modal login form -->
+                <a href="#" class="user_infos" onclick="document.getElementById('id01').style.display='block'" width=50px, height=50px> Connect </a>
+
+                <?php
+                } else {
+
+                    ?>
+
+                    <span> <a href="index.php?action=disconnect"> Bonjour <?= $user->firstName() ?> </a> </span>
+
+                    <?php
+                } 
+
+                ?>
+
             </div>
         </div> 	
+
+        <?php 
+            if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
+             ?>
+                <aside>
+                    <h2 style="padding-left: 5px"> Liste d'Amis </h2>
+                    <ul>
+                <?php 
+                    foreach ($usersFriends as $friend) {
+                        echo "<li>" . $friend->firstName() . " " . $friend->lastName() . "</li>";
+                    }
+                ?>
+
+            <?php
+        }
+
+        ?>
+            </ul>
+
+        </aside>
 
 		<div class="main">
         	<?= $content ?>
         </div>
 
-        <script src="public/js/script.js"></script>
+        <script src="public/js/templateScript.js"></script>
     </body>
 </html>
