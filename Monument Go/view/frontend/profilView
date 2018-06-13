@@ -1,8 +1,8 @@
-<?php $title = 'About'; ?>
+<?php $title = 'Profil'; ?>
 
 <?php ob_start(); ?>
 
-<link rel="stylesheet" type="text/css" href="public/css/AboutStyle.css" >
+
 
 <?php $content = ob_get_clean(); ?>
 
