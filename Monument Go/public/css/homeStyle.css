@@ -1,3 +1,180 @@
+.row{
+	min-height: 350px;
+}
+#prehistoire{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(image/prehistoire.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+#antiquite{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(image/nimes.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+}
+
+
+#moy_age{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(image/chateau1.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+
+}
+
+#renaissance{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(image/chateau2.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+
+}
+
+#aire_indu{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(image/indus.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+#siecle{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(image/guerre.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+}
+
+
+a {
+	color: black;
+}
+
+a:hover{
+	color: black;
+}
+
+.prehistoire h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+.antiquite h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+.moy_age h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+.renaissance h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+.siecle h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+
+.prehistoire p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.antiquite p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.moy_age p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.renaissance p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.aire_indu p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.siecle p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.prehistoire p:hover, .prehistoire a:hover{
+	font-size: 18px;
+}
+.antiquite p:hover, .antiquite a:hover{
+	font-size: 18px;
+}
+
+.moy_age p:hover, .moy_age a:hover{
+	font-size: 18px;
+}
+
+.renaissance p:hover, .renaissance a:hover{
+	font-size: 18px;
+}
+
+.aire_indu p:hover, .aire_indu a:hover{
+	font-size: 18px;
+}
+
+.siecle p:hover, .siecle a:hover{
+	font-size: 18px;
+}
+
+
+
+
+
+a:link{
+	text-decoration: none;
+}
+
+.container-fluide{
+	background-color: rgb(247,231,216);
+}
+
+
 /* Set height of body and the document to 100% to enable "full page tabs" */
 #main {
   height: 100%;
