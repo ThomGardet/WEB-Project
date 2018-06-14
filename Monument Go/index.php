@@ -37,6 +37,15 @@ try
 		else if ($_GET['action'] == 'signup') {
 			signup();
 		}
+
+		else if ($_GET['action'] == 'addFriend') {
+			addFriend($_POST['email']);
+		}
+
+		else if ($_GET['action'] == 'addMonument') {
+			addMonument($_POST['posName'], $_POST['posLatitude'], $_POST['posLongitude'], $_POST['posDescriptiv']);
+			//home();
+		}
 	}
 	
 
