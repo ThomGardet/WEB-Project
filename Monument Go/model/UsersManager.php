@@ -28,6 +28,16 @@ class UsersManager
     	return new User($donnees);
 	}
 
+	public function isMailExists($mail)
+	{
+		$users = $this->getList();
+		foreach ($users as $user) {
+			if ($user->mail() == $mail) {
+				return $user->id();
+			}
+		}
+		return 0;
+	}
 	public function add(User $usr)
 	{
 		$q = $this->_db->prepare('INSERT INTO users(lastName, firstName, mail, phone, postalCode, street, streetNumber, town, country) VALUES(:lastName, :firstName, :mail, :phone, :postalCode, :street, :streetNumber, :town, :country)');

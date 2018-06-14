@@ -1,3 +1,180 @@
+.row{
+	min-height: 350px;
+}
+#prehistoire{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(../pics/prehistoire.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+#antiquite{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(../pics/nimes.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+}
+
+
+#moy_age{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(../pics/chateau1.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+
+}
+
+#renaissance{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(../pics/chateau2.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+
+}
+
+#aire_indu{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(../pics/indus.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+#siecle{
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.6),rgba(255,255,255,0.3), rgba(255,255,255,0.6) ), url(../pics/guerre.jpg);
+	background-size: 100% 100%;
+	border: 1px black solid;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+}
+
+
+a {
+	color: black;
+}
+
+a:hover{
+	color: black;
+}
+
+.prehistoire h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+.antiquite h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+.moy_age h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+.renaissance h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+.siecle h2{
+	margin-left:40px;
+	margin-top: 20px;
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+
+.prehistoire p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.antiquite p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.moy_age p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.renaissance p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.aire_indu p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.siecle p{
+	margin-left:80px;
+	margin-top: 20px;
+	text-align: justify;
+	padding-right: 30px;
+}
+
+.prehistoire p:hover, .prehistoire a:hover{
+	font-size: 18px;
+}
+.antiquite p:hover, .antiquite a:hover{
+	font-size: 18px;
+}
+
+.moy_age p:hover, .moy_age a:hover{
+	font-size: 18px;
+}
+
+.renaissance p:hover, .renaissance a:hover{
+	font-size: 18px;
+}
+
+.aire_indu p:hover, .aire_indu a:hover{
+	font-size: 18px;
+}
+
+.siecle p:hover, .siecle a:hover{
+	font-size: 18px;
+}
+
+
+
+
+
+a:link{
+	text-decoration: none;
+}
+
+.container-fluide{
+	background-color: rgb(247,231,216);
+}
+
+
 /* Set height of body and the document to 100% to enable "full page tabs" */
 #main {
   height: 100%;
@@ -8,15 +185,15 @@
 
 /* Style tab links */
 .tablink {
-  background-color: #555;
-  color: white;
+  background-color: white;
+  color: black;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   font-size: 17px;
-  width: 40%;
+  width: 50%;
 }
 
 .tablink:hover {
@@ -29,8 +206,113 @@
   display: none;
   padding: 100px 20px;
   height: 100%;
-  width: 80%;
+  width: 50%;
+  margin-left:25%;
+}
+	
+
+/* Carousel */
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
 }
 
-#News {background-color: red;}
-#NearMonuments {background-color: green;}
+/* Hide the images by default */
+.mySlides {
+    display: none;
+    width: 400px;
+    height: 300px;
+    margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* Map */
+
+#map {
+	width: 500px;
+	height: 500px;
+    margin: auto;
+}

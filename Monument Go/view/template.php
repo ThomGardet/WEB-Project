@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title> Monument Go - <?= $title ?> </title>
         <link rel="stylesheet" type="text/css" href="public/css/templateStyle.css" >
+        <link rel = "stylesheet" href = "public/bootstrap/css/bootstrap.min.css">
     </head>
         
     <body>
@@ -116,7 +117,7 @@
                     <ul>
                 <?php 
                     foreach ($usersFriends as $friend) {
-                        echo "<li>" . $friend->firstName() . " " . $friend->lastName() . "</li>";
+                        echo "<li> <a href=#> " . $friend->firstName() . " " . $friend->lastName() . " </a> </li>";
                     }
                 ?>
 
@@ -125,12 +126,25 @@
 
         ?>
             </ul>
+            <form method="POST" action="index.php?action=addFriend">
+                <input type="text" name="email" placeholder="email...">
+                <input type="submit" value="ajouter un ami">
+            </form>
 
         </aside>
 
 		<div class="main">
         	<?= $content ?>
         </div>
+
+        <?php if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
+            ?>
+            <style>
+                .main {width: 80%;}
+            </style>
+
+            <?php
+        } ?>
 
         <script src="public/js/templateScript.js"></script>
     </body>

@@ -34,9 +34,9 @@ class FriendsManager
 
 		$id = (int) $idUser;
 
-    	$q = $this->_db->query('SELECT * FROM friends WHERE idFriend = '.$id);
+    	$q = $this->_db->query('SELECT * FROM friends WHERE idUser = '.$id);
     	while ($data = $q->fetch(PDO::FETCH_ASSOC)) {
-    		$friends[] = $usersManager->get($data['idUser']);
+    		$friends[] = $usersManager->get($data['idFriend']);
     	}
 
     	return $friends;
